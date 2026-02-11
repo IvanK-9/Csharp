@@ -28,30 +28,16 @@ class Program
                 words2.Any(word2 => word1.Equals(word2, StringComparison.OrdinalIgnoreCase)));
             
             // Display result
-            if (hasCommonWord)
-            {
-                Console.WriteLine("The substring exists in the string");
-            }
-            else
-            {
-                Console.WriteLine("The substring does not exist in the string");
-            }
+            Console.WriteLine(hasCommonWord 
+                ? "The substring exists in the string" 
+                : "The substring does not exist in the string");
             
-            // Ask to continue with error handling
-            do
-            {
-                Console.WriteLine("\nDo you want to continue? (y/n):");
-                continueChoice = Console.ReadLine()?.ToLower();
-                
-                if (continueChoice != "y" && continueChoice != "n")
-                {
-                    Console.WriteLine("Invalid input! Please enter only 'y' or 'n'.");
-                }
-            } while (continueChoice != "y" && continueChoice != "n");
+            // Ask to continue
+            Console.WriteLine("\nDo you want to continue? (y/n):");
+            continueChoice = Console.ReadLine()?.ToLower();
+            Console.WriteLine();
             
-            Console.WriteLine(); // Add spacing between iterations
-            
-        } while (continueChoice == "y");
+        } while (continueChoice.Contains("y"));
         
         Console.WriteLine("Program ended. Press any key to exit...");
         Console.ReadKey();
